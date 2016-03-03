@@ -4,24 +4,16 @@ package com.longpingzou.calendar;
  * Created by longpingzou on 3/2/16.
  */
 public class CustomDate {
-    public int year = 1970;
-    public int month = 1;
-    public int day = 1;
-    public int selectDay = 1;
+    public int year;
+    public int month;
+    public int day;
 
-    public CustomDate() {
 
-    }
-
-    public CustomDate(int year, int month) {
+    public CustomDate(int year, int month, int day) {
         this.year = year;
         this.month = month;
+        this.day = day;
     }
 
-    public CustomDate(int year, int month, int selectDay) {
-        this.year = year;
-        this.month = month;
-        this.selectDay = selectDay;
-    }
 
 }

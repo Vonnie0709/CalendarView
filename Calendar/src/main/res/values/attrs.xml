@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CalendarView">
+        <attr name="eachCellHeight" format="reference|dimension" />
+        <attr name="eachCellWidth" format="reference|dimension" />
+        <!-- circlr radius -->
+        <attr name="normalCircleRadius" format="float" />
+        <attr name="selectCircleRadius" format="float" />
+        <attr name="todayCircleRadius" format="float" />
+        <!-- normal day's bg color -->
+        <attr name="normalCircleColor" format="reference|color" />
+        <!-- normal day's text color-->
+        <attr name="normalTextColor" format="reference|color" />
+        <!-- select day's text color-->
+        <attr name="selectTextColor" format="reference|color" />
+        <!-- select day's bg color-->
+        <attr name="selectCircleColor" format="reference|color" />
+        <!-- today's color -->
+        <attr name="todayTextColor" format="reference|color" />
+        <!-- today's bg color -->
+        <attr name="todayCircleColor" format="reference|color" />
+        <attr name="normalTextSize" format="dimension|reference" />
+        <attr name="selectTextSize" format="dimension|reference" />
+        <attr name="todayTextSize" format="dimension|reference" />
+
+        <attr name="showMonth">
+            <enum name="January" value="1" />
+            <enum name="February" value="2" />
+            <enum name="March" value="3" />
+            <enum name="April" value="4" />
+            <enum name="May" value="5" />
+            <enum name="June" value="6" />
+            <enum name="July" value="7" />
+            <enum name="August" value="8" />
+            <enum name="September" value="9" />
+            <enum name="October" value="10" />
+            <enum name="November" value="11" />
+            <enum name="December" value="12" />
+        </attr>
+        <attr name="showYear" format="integer" />
+        <attr name="selectDay" format="integer" />
+    </declare-styleable>
+</resources>
