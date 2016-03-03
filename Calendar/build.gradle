@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.example.longpingzou.canlenderdemo"
+        applicationId "com.longpingzou.calendar"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

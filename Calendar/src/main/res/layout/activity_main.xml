@@ -60,7 +60,7 @@
         </TableLayout>
     </LinearLayout>
 
-    <com.example.longpingzou.canlenderdemo.CanlenderView
+    <com.longpingzou.calendar.CanlenderView
         android:id="@+id/canlender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

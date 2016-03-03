@@ -1,4 +1,4 @@
-package com.example.longpingzou.canlenderdemo;
+package com.longpingzou.calendar;
 
 /**
  * Created by longpingzou on 2/26/16.

@@ -1,4 +1,4 @@
-package com.example.longpingzou.canlenderdemo;
+package com.example.longpingzou.calendar;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

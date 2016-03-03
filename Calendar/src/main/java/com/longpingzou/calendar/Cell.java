@@ -1,4 +1,4 @@
-package com.example.longpingzou.canlenderdemo;
+package com.longpingzou.calendar;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

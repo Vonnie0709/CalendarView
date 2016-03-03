@@ -1,4 +1,4 @@
-package com.example.longpingzou.canlenderdemo;
+package com.longpingzou.calendar;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -111,9 +111,14 @@ public class CanlenderView extends View {
         Resources resources = this.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         totalRow = centerCount + 2;
-        Log.i("ABC","totalRow"+totalRow);
+        Log.i("ABC", "totalRow" + totalRow);
         mCellWidth = dm.widthPixels / totalCol;
         mCellHeight = dm.heightPixels / totalRow * 3 / 9;
+    }
+
+
+    private void calcCells() {
+
     }
 
     private void invalidateView() {
