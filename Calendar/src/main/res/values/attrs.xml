@@ -13,6 +13,7 @@
         <attr name="normalTextColor" format="reference|color" />
         <!-- select day's text color-->
         <attr name="selectTextColor" format="reference|color" />
+        <attr name="passDayTextColor" format="reference|color" />
         <!-- select day's bg color-->
         <attr name="selectCircleColor" format="reference|color" />
         <!-- today's color -->

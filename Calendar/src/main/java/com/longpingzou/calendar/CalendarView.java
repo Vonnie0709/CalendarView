@@ -36,6 +36,7 @@ public class CalendarView extends View {
     private int mNormalTextColor;
     private int mTodayTextColor;
     private int mSelectTextColor;
+    private int mPassDayTextColor;
 
     private float mNormalTextSize;
     private float mSelectTextSize;
@@ -66,13 +67,14 @@ public class CalendarView extends View {
         mNormalCircleRadius = mTypedArray.getFloat(R.styleable.CalendarView_normalCircleRadius, -1);
         mSelectCirCleRadius = mTypedArray.getFloat(R.styleable.CalendarView_selectCircleRadius, -1);
         mTodayCirCleRadius = mTypedArray.getFloat(R.styleable.CalendarView_todayCircleRadius, -1);
-        mSelectTextColor = mTypedArray.getColor(R.styleable.CalendarView_selectTextColor, Color.parseColor("#c6c6c6"));
-        mNormalTextColor = mTypedArray.getColor(R.styleable.CalendarView_normalTextColor, Color.WHITE);
-        mTodayTextColor = mTypedArray.getColor(R.styleable.CalendarView_todayTextColor, Color.WHITE);
+        mSelectTextColor = mTypedArray.getColor(R.styleable.CalendarView_selectTextColor, Color.parseColor("#cccccc"));
+        mNormalTextColor = mTypedArray.getColor(R.styleable.CalendarView_normalTextColor, Color.parseColor("#cccccc"));
+        mTodayTextColor = mTypedArray.getColor(R.styleable.CalendarView_todayTextColor, Color.parseColor("#cccccc"));
+        mPassDayTextColor = mTypedArray.getColor(R.styleable.CalendarView_passDayTextColor, Color.parseColor("#5c5c5c"));
 
         mNormalCircleColor = mTypedArray.getColor(R.styleable.CalendarView_normalCircleColor, Color.TRANSPARENT);
         mSelectCircleColor = mTypedArray.getColor(R.styleable.CalendarView_selectCircleColor, Color.parseColor("#d78787"));
-        mTodayCircleColor = mTypedArray.getColor(R.styleable.CalendarView_todayCircleColor, Color.GRAY);
+        mTodayCircleColor = mTypedArray.getColor(R.styleable.CalendarView_todayCircleColor, Color.parseColor("#959595"));
 
 
         mNormalTextSize = mTypedArray.getDimension(R.styleable.CalendarView_normalTextSize, -1);
@@ -128,7 +130,6 @@ public class CalendarView extends View {
                 e.printStackTrace();
             }
         }
-        Log.i("ABC","showDate："+showDate.toString());
         cal.set(showDate.year, showDate.month - 1, 1);
         int maxDate = cal.getActualMaximum(Calendar.DATE);
         int week = cal.get(Calendar.DAY_OF_WEEK) - 1;
@@ -155,12 +156,21 @@ public class CalendarView extends View {
             cells.add(cell);
         }
 
+
         if (showDate.year == currentDate.year && showDate.month == currentDate.month + 1) {
             cells.get(today - 1).mState = CalendarState.CALENDAR_STATE_TODAY;
         }
         if (selectDate.year == showDate.year && selectDate.month == showDate.month && selectDay != -1) {
             cells.get(selectDay - 1).mState = CalendarState.CALENDAR_STATE_SELECTDAY;
         }
+        if (showDate.year == currentDate.year && showDate.month == currentDate.month + 1) {
+            for (Cell cell : cells) {
+                if (cell.date.day < today) {
+                    cell.mState = CalendarState.CALENDAR_STATE_PASSDAY;
+                }
+            }
+        }
+
         Resources resources = this.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         totalRow = centerCount + 2;
@@ -216,6 +226,9 @@ public class CalendarView extends View {
         for (Cell cell : cells) {
             if (cell.col == col) {
                 if (cell.row == row) {
+                    if (cell.mState == CalendarState.CALENDAR_STATE_PASSDAY || cell.mState == CalendarState.CALENDAR_STATE_TODAY) {
+                        return;
+                    }
                     selectDate = cell.date;
                     selectDay = selectDate.day;
                     break;
@@ -268,6 +281,8 @@ public class CalendarView extends View {
                     textSize = mTodayTextSize;
                     radius = mTodayCirCleRadius;
                     break;
+                case CALENDAR_STATE_PASSDAY:
+                    textColor = mPassDayTextColor;
 
             }
             cell.drawCell(canvas, mCellWidth, mCellHeight, radius, textColor, textSize, backgroundColor);

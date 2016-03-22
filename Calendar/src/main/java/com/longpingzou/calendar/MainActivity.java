@@ -45,14 +45,28 @@ public class MainActivity extends Activity {
         Calendar mCalendar = Calendar.getInstance();
         int year = mCalendar.get(Calendar.YEAR);
         int month = mCalendar.get(Calendar.MONTH);
+//        int day = 31;
         int day = mCalendar.get(Calendar.DATE);
-        CustomDate customDate = new CustomDate(year, month + 1, day);
-        mCalendarCurrent.setShowDate(customDate);
-        mCalendarCurrent.setSelectDay(day + 1);
+        int max = mCalendar.getActualMaximum(Calendar.DATE);
+        CustomDate nextDate;
+        CustomDate customDate;
 
-        CustomDate nextDate = new CustomDate(year, month + 2, day);
-        mCalnedarNext.setShowDate(nextDate);
-        mCalnedarNext.setSelectDay(-1);
+        if (day == max) {
+            customDate = new CustomDate(year, month + 2, day);
+            nextDate = new CustomDate(year, month + 3, day);
+            mCalendarCurrent.setShowDate(customDate);
+            mCalnedarNext.setShowDate(nextDate);
+            mCalendarCurrent.setSelectDay(1);
+            mCalnedarNext.setSelectDay(-1);
+        } else {
+            customDate = new CustomDate(year, month + 1, day);
+            nextDate = new CustomDate(year, month + 2, day);
+            mCalendarCurrent.setShowDate(customDate);
+            mCalnedarNext.setShowDate(nextDate);
+            mCalendarCurrent.setSelectDay(day);
+            mCalnedarNext.setSelectDay(-1);
+        }
+
         items.add(v1);
         items.add(v2);
         Adapter mAdapter = new Adapter(items);
