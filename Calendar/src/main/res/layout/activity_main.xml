@@ -59,24 +59,10 @@
         </TableLayout>
     </LinearLayout>
 
-    <com.longpingzou.calendar.CalendarView
-        android:id="@+id/canlender"
+    <com.longpingzou.calendar.CalendarViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        app:selectCircleRadius="100.0"
-        app:selectDay="20"
-        app:selectTextSize="38sp"
-        app:showMonth="March"
-        app:showYear="2016" />
+        android:layout_below="@+id/title" />
 
-    <com.longpingzou.calendar.CalendarView
-        android:id="@+id/canlender1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/canlender"
-        app:selectCircleRadius="100.0"
-        app:selectTextSize="38sp"
-        app:showMonth="April"
-        app:showYear="2016" />
 </RelativeLayout>

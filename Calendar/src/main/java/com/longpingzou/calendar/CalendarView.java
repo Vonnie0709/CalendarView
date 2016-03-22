@@ -128,6 +128,7 @@ public class CalendarView extends View {
                 e.printStackTrace();
             }
         }
+        Log.i("ABC","showDate："+showDate.toString());
         cal.set(showDate.year, showDate.month - 1, 1);
         int maxDate = cal.getActualMaximum(Calendar.DATE);
         int week = cal.get(Calendar.DAY_OF_WEEK) - 1;
@@ -137,19 +138,19 @@ public class CalendarView extends View {
         int day = 1;
         cells = new ArrayList<>();
         for (int i = week; i < 7; i++) {
-            Cell cell = new Cell(0, i, new CustomDate(defaultYear, defaultMonth, day), CalendarState.CALENDAR_STATE_NORMAL);
+            Cell cell = new Cell(0, i, new CustomDate(showDate.year, showDate.month, day), CalendarState.CALENDAR_STATE_NORMAL);
             day++;
             cells.add(cell);
         }
         for (int j = 1; j < centerCount + 1; j++) {
             for (int i = 0; i < 7; i++) {
-                Cell cell = new Cell(j, i, new CustomDate(defaultYear, defaultMonth, day), CalendarState.CALENDAR_STATE_NORMAL);
+                Cell cell = new Cell(j, i, new CustomDate(showDate.year, showDate.month, day), CalendarState.CALENDAR_STATE_NORMAL);
                 day++;
                 cells.add(cell);
             }
         }
         for (int i = 0; i < lastRowCount; i++) {
-            Cell cell = new Cell(centerCount + 1, i, new CustomDate(defaultYear, defaultMonth, day), CalendarState.CALENDAR_STATE_NORMAL);
+            Cell cell = new Cell(centerCount + 1, i, new CustomDate(showDate.year, showDate.month, day), CalendarState.CALENDAR_STATE_NORMAL);
             day++;
             cells.add(cell);
         }
@@ -171,13 +172,18 @@ public class CalendarView extends View {
         }
     }
 
-
-    public void setSelectDay(CustomDate date) {
-        selectDate = date;
+    public void setShowDate(CustomDate date) {
+        showDate = date;
         invalidateView();
     }
 
-    private void invalidateView() {
+    public void setSelectDay(int day) {
+        selectDay = day;
+        selectDate = new CustomDate(showDate.year, showDate.month, day);
+        invalidateView();
+    }
+
+    public void invalidateView() {
         initView();
         invalidate();
     }

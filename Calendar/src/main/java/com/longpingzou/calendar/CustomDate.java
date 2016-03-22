@@ -1,5 +1,7 @@
 package com.longpingzou.calendar;
 
+import android.util.Log;
+
 /**
  * Created by longpingzou on 3/2/16.
  */
@@ -15,5 +17,8 @@ public class CustomDate {
         this.day = day;
     }
 
+    public String toString() {
+        return "Year:" + year + ",Month:" + month + ",Day:" + day;
+    }
 
 }
